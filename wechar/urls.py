@@ -21,4 +21,8 @@ urlpatterns = [
     url(r'^login.html$',views.login),
     url(r'^check_login.html$',views.check_login),
     url(r'^index.html$',views.index),
+    url(r'^avatar.html$',views.avatar),
+    url(r'^contact_list.html$',views.contact_list),
+    url(r'^send_msg.html$',views.send_msg),
+    url(r'^get_msg.html$',views.get_msg),
 ]
