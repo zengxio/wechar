@@ -12,9 +12,8 @@
     <h1>用户列表{{ user_list.MemberCount }}</h1>
     {% for user in user_list.MemberList %}
          <div username="{{ user.UserName }}">
-{#            <img style="width: 80px;height: 80px;" src="/avatar.html?prev={{ user.HeadImgUrl }}">&nbsp;&nbsp;&nbsp;<span>{{ user.NickName }}</span>#}
-{#            <li>{{ user }}</li>#}
-
+            <img style="width: 80px;height: 80px;" src="/avatar.html?prev={{ user.HeadImgUrl }}">&nbsp;&nbsp;&nbsp;<span>{{ user.NickName }}</span>
+            <li>{{ user }}</li>
          </div>
     {% endfor %}
     <script src="/static/jquery-1.12.4.js"></script>
