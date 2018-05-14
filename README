@@ -1,0 +1,45 @@
+Web微信
+	- 轮询，定时每秒刷新一次
+	- 长轮询 hang住请求(web微信，webqq)
+		- 无消息，超时之后断开，客户端立即发送请求
+		- 有消息，立即返回
+	- websocket Magic string
+	高性能
+	    gevent
+		twisted
+		tornado
+		ayncio
+		- 现象:一个线程实现并发请求
+			本质:socket+IO多路复用
+
+思路：
+1、显示二维码
+	获取uuid
+	根据uuid创建二维码
+
+2、扫码成功确认登陆
+	登录cookie，凭证cookie存入session
+	用户初始化，获取最近联系人、个人信息放在session中
+
+3、获取头像、最近联系人并显示
+   后台发送请求携带请求头以及cookie   requests.get(img_url, headers={'Content-Type': 'image/jpeg'}, cookies=cookies)
+   从session获取最近联系人列表
+
+4、获取所有人信息
+   从session中获取凭证，以及cookie 发送请求获取数据
+
+5、发消息
+   后台发送session内的凭证skey到服务器。指定User.NickName 填写发送内容
+   返回以下为成功
+   {
+	"BaseResponse": {
+	"Ret": 0,
+	"ErrMsg": ""
+	}
+	,
+	"MsgID": "xxxxxxxxxxxxx8",
+	"LocalID": "xxxxxxxxxxxxxxx8"
+	}
+
+6、收消息
+    先检测是否有消息到来
